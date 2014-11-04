@@ -1,0 +1,8 @@
+-- Test difference between cases
+
+Four test cases:
+1. No case
+2. Small with holes
+3. Small without holes
+4. Large with a few holes
+Use a transmitter with a 120s ping rate (ID 39xxx).

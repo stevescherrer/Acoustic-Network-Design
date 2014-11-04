@@ -1,0 +1,14 @@
+Ideas on how to analyse the Diamondhead ranging data - 04.02.2013
+
+- Check for temporal variability e.g. by FFT or see if autocorrelation function is significant at any lags.
+
+- If temporal variability is not present all data points from a receiver/transmitter combination can be assumed to be independent. One could then construct a GLM for the proportion of received transmissions with depth of receiver, depth of transmitter, and distance  as factors.
+
+- Pairwise tests to check differences in proportion of received pings
+
+- Cross-correlations 
+
+- Multivariate time series analysis?
+
+- If temporal variability is present subsample the time series?
+

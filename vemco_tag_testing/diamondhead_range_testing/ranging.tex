@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[latin1]{inputenc}
+%\usepackage[english,french]{babel}
+%\usepackage{lineno}
+\usepackage{tikz}
+\setlength{\doublerulesep}{\arrayrulewidth}
+\usepackage{setspace}
+
+%%%% Comment these two lines to get journal format %%%
+%\renewcommand{\baselinestretch}{1.8} % the double line spacing
+%\usepackage{endfloat}
+%%%%
+
+\usepackage{verbatim}
+%\usepackage[x11names, rgb]{xcolor}
+%\usepackage{tikz}
+
+\newcommand{\ie}{i.e.\ }
+\newcommand{\eg}{e.g.\ }
+
+%\linenumbers
+\textwidth=17cm
+\marginparwidth=0cm
+\hoffset=-2cm
+
+\begin{document}
+\begin{center}
+\Large Ranging experiments\\ \normalsize
+Martin W.\ Pedersen, Kevin Weng\\
+Compiled: \today  
+\end{center}
+
+\textbf{Abstract}\\
+Questions: 
+\begin{enumerate}
+\item Where on the vertical axis should receivers be placed to get the best detection efficiency?
+\item At what depth are fish easiest to detect?
+\item Can detection efficiency at one depth predict efficiency at other depths?
+\end{enumerate}
+
+ 
+\newpage
+\section{Introduction} \label{sec:introduction} 
+
+\section{Methods}
+\label{sec:methods}
+
+Six transmitters were deployed at two locations and three different heights relative to the bottom (3 m, 30 m, and 60 m off the sea floor). Three receivers were deployed at a different location but at the same three heights as the transmitters. Data received from the receivers are structured in a three-dimensional array $y_t(i,j)$, where $t$ is time, $i\in \{1,\ldots,6\}$ refers to transmitter number and $j\in \{1,2,3\}$ refers to receiver number.
+
+\subsection{Information extrapolation}
+
+Can information collected with one receiver-transmitter combination be used to infer detection efficiency at other receiver-transmitter combinations? To answer this question we construct a simple linear regression
+
+\begin{equation}
+  y_t(i,j) = \mu(i,j) + \theta[y_t(k,l)-\mu(k,l)] + e_t,
+\label{eq:eff1}
+\end{equation}
+where $\mu(i,j) = \frac{1}{T}\sum_t y_t(i,j)$, $e_t \sim N(0,\sigma^2)$, and $\theta$ is a proportionality parameter. This model was fitted to the following scenarios:
+
+\begin{itemize}
+\item For a given transmitter how do the data vary for different receivers (at different depths)? Hourly intervals.
+\item For a given receiver how do the data vary for different transmitters? Longer intervals.
+\end{itemize}
+
+\section{Results}
+\label{sec:results}
+
+Collected pinger data from the eighteen different combinations transmitters and receiver are binned into hourly intervals (Figure~\ref{fig:detectionpercentage}).
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[trim=0cm 0cm 0cm 0cm,clip,angle=0,width=1\textwidth]{detectionpercentage.pdf}
+  \end{center}
+  \caption{Proportion of expected pings received at different depths for receiver and transmitter.}
+\label{fig:detectionpercentage}
+\end{figure}
+
+\subsection{Fixed transmitter, different receiver}
+
+The linear model (\ref{eq:eff1}) was fitted to combinations of data. Estimates of $\theta$ are shown in Table~\ref{tab:coeff}, $R^2$ and residual standard errors are shown in Tables~\ref{tab:rsquare} and \ref{tab:resse}. A poor fit 
+
+\input{coeff.tex}
+\input{rsquare.tex}
+\input{resse.tex}
+\input{pvals.tex}
+\input{pvals2.tex}
+
+\section{Discussion}
+\label{sec:discussion}
+
+
+\bibliographystyle{elsarticle-harv}
+\bibliography{/home/mwp/work/refs/refs}
+
+\end{document}
